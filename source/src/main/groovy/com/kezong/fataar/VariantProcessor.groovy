@@ -400,9 +400,19 @@ class VariantProcessor {
                 }
 
                 mProject.copy {
+                    FatUtils.logAnytime("[embed detected]${outputDir.absolutePath}/META-INF, ${javacDir.absolutePath}")
                     from outputDir.absolutePath + "/META-INF"
+                    FatUtils.logAnytime("[embed detected]${DirectoryManager.getKotlinMetaDirectory(mVariant)}")
                     into DirectoryManager.getKotlinMetaDirectory(mVariant)
                     include '*.kotlin_module'
+                }
+
+                mProject.copy {
+                    FatUtils.logAnytime("[embed detected]${outputDir.absolutePath}/META-INF, ${javacDir.absolutePath}")
+                    from outputDir.absolutePath + "/META-INF/services"
+                    FatUtils.logAnytime("[embed detected]${DirectoryManager.getKotlinMetaDirectory(mVariant)}")
+                    into mProject.file(DirectoryManager.getKotlinMetaDirectory(mVariant).path + "/services")
+                    include '*'
                 }
             }
         }
