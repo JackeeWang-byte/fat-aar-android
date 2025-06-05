@@ -1,5 +1,5 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.kezong.fat-aar'
+apply plugin: 'com.JackeeWang.fat-aar'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 

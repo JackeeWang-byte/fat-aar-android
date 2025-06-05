@@ -1,0 +1,100 @@
+java {
+    // Sonatype官方要求 Java 源代码和 Java 文档
+    withJavadocJar()
+    withSourcesJar()
+}
+
+def PUBLISH_GROUP_ID="io.github.jackeewang-byte"
+def PUBLISH_ARTIFACT_ID="fat-aar"
+def PUBLISH_VERSION="1.3.8"
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            // The coordinates of the library, being set from variables that
+            // we'll set up in a moment
+            groupId PUBLISH_GROUP_ID
+            artifactId PUBLISH_ARTIFACT_ID
+            version PUBLISH_VERSION
+
+            from components.java
+
+            pom {
+                name = PUBLISH_ARTIFACT_ID
+                description = 'A gradle plugin that merge dependencies into the final aar file works with AGP 3.+'
+                // If your project has a dedicated site, use its URL here
+                url = 'https://github.com/JackeeWang-byte/fat-aar-android'
+                licenses {
+                    license {
+                        name = 'The MIT License'
+                        url = 'https://opensource.org/licenses/MIT'
+                    }
+                }
+                developers {
+                    developer {
+                        id = 'JackeeWang'
+                        name = 'wangningtao06@gmail.com'
+                        email = 'wangningtao06@gmail.com'
+                    }
+                }
+                // Version control info, if you're using GitHub, follow the format as seen here
+                scm {
+                    connection = 'scm:git:https://github.com/JackeeWang-byte/fat-aar-android.git'
+                    developerConnection = 'scm:git:ssh://git@github.com:JackeeWang-byte/fat-aar-android.git'
+                    url = 'https://github.com/JackeeWang-byte/fat-aar-android'
+                }
+
+                // 强制设置 modelVersion（有些仓库要求）
+                packaging 'jar'
+                // A slightly hacky fix so that your POM will include any transitive dependencies
+                // that your library builds upon
+//                withXml {
+//                    def dependenciesNode = asNode().appendNode('dependencies')
+//
+//                    project.configurations.implementation.allDependencies.each { dep ->
+//                        if (dep instanceof ExternalDependency) {
+//                            def dependencyNode = dependenciesNode.appendNode('dependency')
+//                            dependencyNode.appendNode('groupId', dep.group)
+//                            dependencyNode.appendNode('artifactId', dep.name)
+//                            dependencyNode.appendNode('version', dep.version)
+//                        }
+//                    }
+//                }
+
+            }
+        }
+    }
+
+    repositories {
+        // 从1.3.0版本开始，不需要配置该仓库
+        maven {
+            name = "Local"
+            url = layout.buildDirectory.dir('repos/bundles')
+        }
+    }
+}
+
+signing {
+    // 关于 GPG 签名, 请参考 https://central.sonatype.org/publish/requirements/gpg/
+//    signing.keyId=0xB2FC5818
+//    signing.password=Wnt19901005@
+//    def signingKey = '0xB2FC5818'
+//    def signingPassword = 'Wnt19901005@'
+//    useInMemoryPgpKeys(signingKey, signingPassword)
+
+    sign publishing.publications.mavenJava
+}
+
+mavenCentral {
+    // 从1.3.0版本开始，不需要配置该项
+    repoDir = layout.buildDirectory.dir('repos/bundles')
+    // 从 Sonatype 官方获取的 Publisher API 调用的 token，应为 Base64 编码后的 username:password
+    authToken = 'cHd5UEQvNjY6U214OExPaHJPSzljNzlZTGxiWENGZFQvNnZ1bmw5a05vcncrWndraUZvV20='
+    // 上传是否应该自动发布。如果您希望手动执行此操作，请使用 'USER_MANAGED'。
+    // 该属性是可选的，默认为 'AUTOMATIC'。
+    publishingType = 'USER_MANAGED'
+    // 当发布类型为 'AUTOMATIC' 时，状态API获取 'PUBLISHING' 或 'PUBLISHED' 状态的最大等待时间
+    // 或者当发布类型为 'USER_MANAGED' 时，获取 'VALIDATED' 状态。
+    // 该属性是可选的，默认为60秒。
+    maxWait = 60
+}
