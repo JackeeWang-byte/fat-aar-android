@@ -2,10 +2,6 @@
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/kezong/fat-aar-android/blob/master/LICENSE)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.kezong/fat-aar/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.kezong/fat-aar)
 
->**因为我不再从事研发工作，所以该仓库将不再进行维护和更新。<br>**
->**你可以尝试按底下的步骤引入该插件，如果它在新的gradle版本中无法工作，你可以fork或者下载该仓库并且修改它，该项目的代码并不是很复杂。**
->
->**P.S. 希望Google官方能够尽快支持该功能**
 
 该插件提供了将library以及它依赖的library一起打包成一个完整aar的解决方案，支持AGP 3.0及以上。（目前测试的版本范围是AGP 3.0 - 7.1.0，Gradle 4.9 - 7.3）
 
@@ -20,7 +16,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.github.kezong:fat-aar:1.3.8'
+        classpath 'io.github.jackeewang-byte:fat-aar:1.3.8'
     }
 }
 ```
@@ -28,7 +24,7 @@ buildscript {
 #### 第二步: Add plugin
 添加以下代码到你的主library的`build.gradle`中:
 ```groovy
-apply plugin: 'com.kezong.fat-aar'
+apply plugin: 'com.JackeeWang.fat-aar'
 ```
 
 #### 第三步: Embed dependencies
@@ -151,6 +147,7 @@ AAR是Android提供的一种官方文件形式；
 ## 更新日志
 - [1.3.8](<https://github.com/kezong/fat-aar-android/releases/tag/v1.3.8>)
   - Fix the issue that plugin cannot be used in jdk 1.8 [#371](https://github.com/kezong/fat-aar-android/issues/371)
+  - Fix the issue that Kotlin top-level functions cannot be used
 - [1.3.7](<https://github.com/kezong/fat-aar-android/releases/tag/v1.3.7>)
   - Fix productFlavor detection in embed submodules [#348](https://github.com/kezong/fat-aar-android/issues/348)
   - Support missingDimensionStrategy without productFlavors in current project. [#343](https://github.com/kezong/fat-aar-android/issues/343)

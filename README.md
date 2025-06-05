@@ -5,12 +5,8 @@
 
 - [中文文档](./README_CN.md)
 
->**I am no longer engaged in research and development, so the project will not be updated and maintained.<br>**
->**You can try to use the following steps to reference the remote plugin. If it doesn't work on the new version of gradle, you can fork or download this project to modify it, the code of this project is not very complex.**
->
->**P.S. Hope Google can support this damn feature as soon as possible.**
-
 The solution of merging aar works with [AGP][3] `3.0` and higher. (Tested in AGP 3.0 - 7.1.0, and Gradle 4.9 - 7.3)
+
 ## Getting Started
 
 ### Step 1: Add classpath
@@ -22,7 +18,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.github.kezong:fat-aar:1.3.8'
+        classpath 'io.github.jackeewang-byte:fat-aar:1.3.8'
     }
 }
 ```
@@ -30,7 +26,7 @@ buildscript {
 ### Step 2: Add plugin
 Add snippet below to the `build.gradle` of your main android library:
 ```groovy
-apply plugin: 'com.kezong.fat-aar'
+apply plugin: 'com.JackeeWang.fat-aar'
 ```
 
 ### Step 3: Embed dependencies
@@ -139,6 +135,7 @@ The following link which version of Gradle is required for each version of the A
 ## Version Log
 - [1.3.8](<https://github.com/kezong/fat-aar-android/releases/tag/v1.3.8>)
   - Fix the issue that plugin cannot be used in jdk 1.8 [#371](https://github.com/kezong/fat-aar-android/issues/371)
+  - Fix the issue that Kotlin top-level functions cannot be used
 - [1.3.7](<https://github.com/kezong/fat-aar-android/releases/tag/v1.3.7>)
   - Fix productFlavor detection in embed submodules [#348](https://github.com/kezong/fat-aar-android/issues/348)
   - Support missingDimensionStrategy without productFlavors in current project. [#343](https://github.com/kezong/fat-aar-android/issues/343)
