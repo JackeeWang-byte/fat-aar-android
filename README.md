@@ -18,7 +18,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'io.github.jackeewang-byte:fat-aar:1.3.8'
+        classpath 'io.github.jackeewang-byte:fat-aar:1.3.9'
     }
 }
 ```
@@ -112,30 +112,32 @@ See [anatomy of an aar file here][2].
 
 
 ## Gradle Version Support
-| Version | Gradle Plugin | Gradle |
-| :--------: | :--------:|:-------:|
-| 1.0.1 | 3.1.0 - 3.2.1 | 4.4 - 6.0 |
-| 1.1.6 | 3.1.0 - 3.4.1 | 4.4 - 6.0 |
-| 1.1.10| 3.0.0 - 3.4.1 | 4.1 - 6.0 |
-| 1.2.6 | 3.0.0 - 3.5.0 | 4.1 - 6.0 |
-| 1.2.8 | 3.0.0 - 3.5.9 | 4.1 - 6.8 |
+|     Version     | Gradle Plugin | Gradle |
+|:---------------:| :--------:|:-------:|
+|      1.0.1      | 3.1.0 - 3.2.1 | 4.4 - 6.0 |
+|      1.1.6      | 3.1.0 - 3.4.1 | 4.4 - 6.0 |
+|     1.1.10      | 3.0.0 - 3.4.1 | 4.1 - 6.0 |
+|      1.2.6      | 3.0.0 - 3.5.0 | 4.1 - 6.0 |
+|      1.2.8      | 3.0.0 - 3.5.9 | 4.1 - 6.8 |
 | 1.2.11 - 1.2.14 | 3.0.0 - 3.6.9 | 4.1 - 6.8 |
 | 1.2.15 - 1.2.16 | 3.0.0 - 4.0.2 | 4.1 - 6.8 |
-| 1.2.17 | 3.0.0 - 4.0.2 | 4.9 - 6.8 |
-| 1.2.18+ | 3.0.0 - 4.1.0 | 4.9 - 6.8 |
-| 1.3.+ | 3.0.0 - 4.1.0 | 4.9 - 6.8 |
-| 1.3.4 - 1.3.5 | 3.0.0 - 4.1.0 | 4.9+ |
-| 1.3.6 | 3.0.0 - 4.2.0 | 4.9+ |
-| 1.3.8 | 3.0.0+ | 4.9+ |
+|     1.2.17      | 3.0.0 - 4.0.2 | 4.9 - 6.8 |
+|     1.2.18+     | 3.0.0 - 4.1.0 | 4.9 - 6.8 |
+|      1.3.+      | 3.0.0 - 4.1.0 | 4.9 - 6.8 |
+|  1.3.4 - 1.3.5  | 3.0.0 - 4.1.0 | 4.9+ |
+|      1.3.6      | 3.0.0 - 4.2.0 | 4.9+ |
+|      1.3.8      | 3.0.0+ | 4.9+ |
+|      1.3.9      | 3.0.0+ | 4.9+ |
 
 The following link which version of Gradle is required for each version of the Android Gradle plugin. For the best performance, you should use the latest possible version of both Gradle and the plugin.
 
 [Plugin version and Required Gradle version](https://developer.android.google.cn/studio/releases/gradle-plugin.html)
 
 ## Version Log
+- [1.3.9](<https://github.com/JackeeWang-byte/fat-aar-android/releases/tag/v1.3.9>)
+  - Fix the issue that Kotlin top-level functions cannot be used
 - [1.3.8](<https://github.com/kezong/fat-aar-android/releases/tag/v1.3.8>)
   - Fix the issue that plugin cannot be used in jdk 1.8 [#371](https://github.com/kezong/fat-aar-android/issues/371)
-  - Fix the issue that Kotlin top-level functions cannot be used
 - [1.3.7](<https://github.com/kezong/fat-aar-android/releases/tag/v1.3.7>)
   - Fix productFlavor detection in embed submodules [#348](https://github.com/kezong/fat-aar-android/issues/348)
   - Support missingDimensionStrategy without productFlavors in current project. [#343](https://github.com/kezong/fat-aar-android/issues/343)
@@ -242,8 +244,10 @@ The following link which version of Gradle is required for each version of the A
 
 - [android-fat-aar][1]
 - [fat-aar-plugin][4]
+- [fat-aar-android][5]
 
 [1]: https://github.com/adwiv/android-fat-aar
 [2]: https://developer.android.com/studio/projects/android-library.html#aar-contents
 [3]: https://developer.android.com/studio/releases/gradle-plugin.html
 [4]: https://github.com/Vigi0303/fat-aar-plugin
+[5]: https://github.com/kezong/fat-aar-android
